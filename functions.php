@@ -1,11 +1,28 @@
 <?php
+/**
+ * Beaver Builder Child Theme
+ * For additional information on potential customization options,
+ * read the developers' documentation:
+ *
+ * https://docs.wpbeaverbuilder.com/
+ * @version 1.0
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+  exit; // Exit if accessed directly.
+}
 
-// Defines
-define( 'FL_CHILD_THEME_DIR', get_stylesheet_directory() );
-define( 'FL_CHILD_THEME_URL', get_stylesheet_directory_uri() );
-
-// Classes
-require_once 'classes/class-fl-child-theme.php';
-
-// Actions
-add_action( 'wp_enqueue_scripts', 'FLChildTheme::enqueue_scripts', 1000 );
+/**
+ * Enqueue child theme style.css file
+ * Do not delete this, you will need it
+ */
+add_action( 'wp_enqueue_scripts', function() {
+  wp_enqueue_style(
+    'child-style',
+    get_stylesheet_uri(),
+    array( 'fl-automator-skin' ),
+    wp_get_theme()->get( 'Version' )
+  );
+});
+/**
+ * Add your custom theme functions below!
+ */
